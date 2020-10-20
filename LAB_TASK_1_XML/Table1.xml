@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<SmartphoneBrands>
+    <Smartphones>
+        <ID>11</ID>
+        <Name>Samsung</Name>
+        <UnitPrice>35000</UnitPrice>
+        <Stock>50</Stock>
+        <Status>1</Status>
+    </Smartphones>
+
+    <Smartphones>
+        <ID>20</ID>
+        <Name>HTC</Name>
+        <UnitPrice>65300</UnitPrice>
+        <Stock>35</Stock>
+        <Status>0</Status>
+    </Smartphones>
+
+    <Smartphones>
+        <ID>23</ID>
+        <Name>Nokia</Name>
+        <UnitPrice>25100</UnitPrice>
+        <Stock>100</Stock>
+        <Status>1</Status>
+    </Smartphones>
+
+
+</SmartphoneBrands>
