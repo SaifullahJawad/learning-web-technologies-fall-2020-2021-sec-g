@@ -1,4 +1,20 @@
 
+<?php
+
+
+if(isset($_POST['submit']))
+{
+    $userName = $_POST['userName'];
+    echo $userName;
+}
+
+
+?>
+
+
+
+
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -6,20 +22,12 @@
 </head>
 <body>
 
-    <form action="NameCheck.php" method="POST">
+    <form method="POST">
 
         <fieldset style="display: inline-block;">
             <legend> NAME </legend>
             <label for="userName"> User Name: </label>
-            <input type="text" id="userName" name="userName" value="
-                                                                    <?php
-                                                                        if(isset($_POST['submit']))
-                                                                        {
-                                                                            $userName = $_POST['userName'];
-                                                                            echo $userName;
-                                                                        }
-                                                                    
-                                                                    ?>">
+            <input type="text" id="userName" name="userName" value="">
             <hr>
             <input type="submit" name="submit" value="Submit">
 
