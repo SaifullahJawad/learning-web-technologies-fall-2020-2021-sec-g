@@ -10,7 +10,37 @@ if(isset($_POST['submit']))
     }
     else
     {
-        echo "Degree selection is completed";
+        
+        if( isset($_POST["SSC"]) && !isset($_POST["HSC"]) && !isset($_POST["BSc"]))
+        {
+            echo "You have completed SSC";
+        }
+        else if( !isset($_POST["SSC"]) && isset($_POST["HSC"]) && !isset($_POST["BSc"]))
+        {
+            echo "You have completed HSC";
+        }
+        else if( !isset($_POST["SSC"]) && !isset($_POST["HSC"]) && isset($_POST["BSc"]))
+        {
+            echo "You have completed BSc";
+        }
+        else if( isset($_POST["SSC"]) && isset($_POST["HSC"]) && !isset($_POST["BSc"]))
+        {
+            echo "You have completed SSC and HSC";
+        }
+        else if( isset($_POST["SSC"]) && isset($_POST["HSC"]) && isset($_POST["BSc"]))
+        {
+            echo "You have completed SSC, HSC and BSc";
+        }
+        else if( !isset($_POST["SSC"]) && isset($_POST["HSC"]) && isset($_POST["BSc"]))
+        {
+            echo "You have completed HSC and BSc";
+        }
+        else
+        {
+            echo "You have completed SSC and BSc";
+        }
+        
+        
     }
     
 }

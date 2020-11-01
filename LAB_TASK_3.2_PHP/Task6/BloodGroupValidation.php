@@ -10,7 +10,7 @@ if(isset($_POST['submit']))
     }
     else
     {
-        echo "Blood group is selected";
+        echo " Your blood group is {$_POST["bloodGroup"]}";
     }
     
 }

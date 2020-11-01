@@ -4,13 +4,48 @@
 if(isset($_POST['submit']))
 {
 
-    if($_POST["day"] >= 1 && $_POST["day"] <=31 && $_POST["month"] >= 1 && $_POST["month"] <= 12 && $_POST["year"] >= 1900 && $_POST["year"] <= 2016)
+    if(empty($_POST["day"]))
     {
-        echo "Valid DOB";
+        echo "Day field of DOB is empty! Please enter your DOB properly!";
+    }
+    else if(empty($_POST["month"]))
+    {
+        echo "Month field of DOB is empty! Please enter your DOB properly!";
+    }
+    else if(empty($_POST["year"]))
+    {
+        echo "Year field of DOB is empty! Please enter your DOB properly!";
     }
     else
     {
-        echo "Invalid DOB";
+
+        if($_POST["day"] >= 1 && $_POST["day"] <=31 && $_POST["month"] >= 1 && $_POST["month"] <= 12 && $_POST["year"] >= 1900 && $_POST["year"] <= 2016)
+        {
+            if( ($_POST["month"] == 4 || $_POST["month"] == 6 ||  $_POST["month"] == 9 || $_POST["month"] == 11 ) && $_POST["day"] <= 30 )
+            {
+                echo "Your birthdate is {$_POST["day"]}/{$_POST["month"]}/{$_POST["year"]}";
+                
+            }
+            else if( ($_POST["month"] == 1 || $_POST["month"] == 3 ||  $_POST["month"] == 5 || $_POST["month"] == 7 || $_POST["month"] == 8 || $_POST["month"] == 10 || $_POST["month"] == 12 ) && $_POST["day"] <= 31 )
+            {
+                echo "Your birthdate is {$_POST["day"]}/{$_POST["month"]}/{$_POST["year"]}";
+
+            }
+            else if( $_POST["month"] == 2  && $_POST["day"] <= 28 )
+            {
+                echo "Your birthdate is {$_POST["day"]}/{$_POST["month"]}/{$_POST["year"]}";
+
+            }
+            else
+            {
+                echo "Invalid DOB";
+            }
+        }
+        else
+        {
+            echo "Invalid DOB";
+        }
+
     }
     
 }
@@ -47,9 +82,9 @@ if(isset($_POST['submit']))
 
                     <tr align = "center">
 
-                        <td> <input type="text" name="day" size="1" required> <strong><big>/</big></strong> </td>
-                        <td> <input type="text" name="month" size="1" required> <strong><big>/</big></strong> </td>
-                        <td> <input type="text" name="year" size="1" required> </td>   
+                        <td> <input type="text" name="day" size="1" > <strong><big>/</big></strong> </td>
+                        <td> <input type="text" name="month" size="1" > <strong><big>/</big></strong> </td>
+                        <td> <input type="text" name="year" size="1" > </td>   
 
                     </tr>
 

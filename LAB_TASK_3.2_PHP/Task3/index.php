@@ -10,7 +10,7 @@ if(isset($_POST['submit']))
     }
     else
     {
-        echo "{$_POST["Genders"]} gender is selected";
+        echo "Your gender is {$_POST["Genders"]}";
     }
 
     

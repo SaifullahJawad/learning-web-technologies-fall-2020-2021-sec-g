@@ -9,14 +9,23 @@ if(isset($_POST['submit']))
     $lastDot = strripos($email, ".");
 
 
-    if($atSign > 0 && $email[$atSign+1] != "." && $lastDot > $atSign+1 && !strpos($email, " ") && !strpos($email, "..") && strlen($email) > ($lastDot+1))
+    if(!empty($_POST["email"]))
     {
-        echo "Valid email!";
+        if($atSign > 0 && $email[$atSign+1] != "." && $lastDot > $atSign+1 && !strpos($email, " ") && !strpos($email, "..") && strlen($email) > ($lastDot+1))
+        {
+            echo "Your email is $email";
+        }
+        else
+        {
+            echo "Invalid email!";
+        }
+
     }
     else
     {
-        echo "Invalid email!";
+        echo "Email field is empty! Please enter your email!";
     }
+    
 
     
 }
@@ -44,7 +53,7 @@ if(isset($_POST['submit']))
                 </tr>
 
                 <tr>
-                    <td><input type="text" id="email" name="email" required ></td>
+                    <td><input type="text" id="email" name="email" ></td>
                 </tr>
 
                 <tr>

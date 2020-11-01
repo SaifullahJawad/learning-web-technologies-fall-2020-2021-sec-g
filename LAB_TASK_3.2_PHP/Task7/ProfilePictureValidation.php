@@ -4,14 +4,27 @@
 if(isset($_POST['submit']))
 {
 
-   if($_POST["userId"] >= 0)
-   {
-        echo "Valid input";
-   }
-   else
-   {
-       echo "User ID cannot be negative";
-   }
+    if(empty($_POST["userId"]))
+    {
+        echo "User Id field is empty!";
+    }
+    else if(empty($_POST["picture"]))
+    {
+        echo "No picture is chosen!";
+
+    }
+    else
+    {
+        if($_POST["userId"] >= 0)
+        {
+                echo "Your User Id is {$_POST["userId"]}";
+        }
+        else
+        {
+            echo "User ID cannot be negative";
+        }
+    }
+   
     
 }
 
@@ -40,14 +53,14 @@ if(isset($_POST['submit']))
                     <tr>
 
                         <td> <label for="userId"> User Id </label> </td>
-                        <td> <input type="text" name="userId" id="userId" required> </td>
+                        <td> <input type="text" name="userId" id="userId" > </td>
 
                     </tr>
 
                     <tr height="40px">
 
                         <td> <label for="picture"> Picture </label> </td>
-                        <td> <input type="file" name="picture" id="picture"  required> </td>   
+                        <td> <input type="file" name="picture" id="picture" > </td>   
 
                     </tr>
 
