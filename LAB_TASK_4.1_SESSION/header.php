@@ -1,3 +1,15 @@
+<?php
+
+    if(!isset($_SESSION))
+    {
+        session_start();
+    }
+
+
+    
+
+?>
+
 
 <body>
     <table border="1" style="border-collapse: collapse;" width = "100%">
@@ -8,7 +20,7 @@
         <td style="border:0px" align="right"> 
         <?php
 
-            if($_SESSION["isLoggedIn"])
+            if($_SESSION["isLoggedIn"] ?? false)
             {
         ?>
                 Logged in as <a href="loggedInDashboard.php"> <?php echo $_SESSION["userName"]; ?> </a> |
