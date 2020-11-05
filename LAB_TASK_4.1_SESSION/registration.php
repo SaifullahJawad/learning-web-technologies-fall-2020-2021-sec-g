@@ -1,5 +1,15 @@
 <?php
 
+    
+    if(!isset($_SESSION))
+    {
+        session_start();
+    }
+
+    // if($_SESSION["isLoggedIn"] ?? false)
+    // {
+    //     header("Location: dashboard.php");
+    // }
 
     if(isset($_POST["submit"]))
     {
@@ -7,8 +17,9 @@
     }
     else
     {
-        session_start();
-        session_unset();
+        
+        unset($_SESSION["previousInput"]);
+        unset($_SESSION["errors"]);
        
     }
     

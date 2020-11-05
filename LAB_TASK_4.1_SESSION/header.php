@@ -6,6 +6,8 @@
     }
 
 
+
+
     
 
 ?>
@@ -23,7 +25,7 @@
             if($_SESSION["isLoggedIn"] ?? false)
             {
         ?>
-                Logged in as <a href="loggedInDashboard.php"> <?php echo $_SESSION["userName"]; ?> </a> |
+                Logged in as <a href="loggedInDashboard.php"> <?php if(isset($_COOKIE["loggedInUserName"])){echo $_COOKIE["loggedInUserName"];}else{echo $_SESSION["loggedInUserName"];} ?> </a> |
                 <a href="logout.php"> Logout </a>
 
         <?php

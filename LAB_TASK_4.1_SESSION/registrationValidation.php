@@ -8,12 +8,10 @@
 
     }
 
-
     if(!isset($_SESSION))
     {
         session_start();
     }
-
 
     $errors = ["name" => "", "email" => "", "userName" => "", "password" => "", "confirmPassword" => "", "genders" => "", "dob" => ""];
     $previousInput = ["name" => "", "email" => "", "userName" => "", "password" => "", "confirmPassword" => "", "genders" => "", "day" => "", "month" => "", "year" => ""];
@@ -123,14 +121,19 @@
     if( $errors["name"] == "" && $errors["email"] == "" && $errors["userName"] == "" && $errors["password"] == "" && $errors["genders"] == "" && $errors["dob"] == "" )
     {
         
-        setcookie("name", $_POST["name"], time()+3600);
-        setcookie("email", $_POST["email"], time()+3600);
-        setcookie("userName", $_POST["userName"], time()+3600);
-        setcookie("password", $_POST["password"], time()+3600);
-        setcookie("genders", $_POST["genders"], time()+3600);
-        setcookie("dobDay", $_POST["day"], time()+3600);
-        setcookie("dobMonth", $_POST["month"], time()+3600);
-        setcookie("dobYear", $_POST["year"], time()+3600);
+
+        $_SESSION["name"] = $_POST["name"];
+        $_SESSION["email"] = $_POST["email"];
+        $_SESSION["userName"] = $_POST["userName"];
+        $_SESSION["password"] = $_POST["password"];
+        $_SESSION["genders"] = $_POST["genders"];
+        $_SESSION["dobDay"] = $_POST["dobDay"];
+        $_SESSION["dobMonth"] = $_POST["dobMonth"];
+        $_SESSION["dobYear"] = $_POST["dobYear"];
+
+        unset($_SESSION["previousInput"]);
+        unset($_SESSION["errors"]);
+
 
         header("Location: logIn.php");
     }
