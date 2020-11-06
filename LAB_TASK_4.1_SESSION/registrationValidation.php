@@ -127,9 +127,9 @@
         $_SESSION["userName"] = $_POST["userName"];
         $_SESSION["password"] = $_POST["password"];
         $_SESSION["genders"] = $_POST["genders"];
-        $_SESSION["dobDay"] = $_POST["dobDay"];
-        $_SESSION["dobMonth"] = $_POST["dobMonth"];
-        $_SESSION["dobYear"] = $_POST["dobYear"];
+
+        $dateOfBirth = $_POST["day"] ."/". $_POST["month"] ."/". $_POST["year"];
+        $_SESSION["dob"] = $dateOfBirth;
 
         unset($_SESSION["previousInput"]);
         unset($_SESSION["errors"]);

@@ -5,7 +5,7 @@
         session_start();
     }
 
-    if(isset($_SESSION["isLoggedIn"]))
+    if(isset($_SESSION["isLoggedIn"]) || isset($_COOKIE["loggedInUserName"]) )
     {
         header("Location: dashboard.php");
     }

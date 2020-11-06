@@ -1,16 +1,21 @@
 <?php
 
+    if (realpath(__FILE__) == realpath( $_SERVER['SCRIPT_FILENAME'] ))
+    {
+        exit();   
+
+    }
+
     if(!isset($_SESSION))
     {
         session_start();
     }
-
+?>
 
 
 
     
 
-?>
 
 
 <body>
