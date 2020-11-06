@@ -6,10 +6,10 @@
         session_start();
     }
 
-    // if($_SESSION["isLoggedIn"] ?? false)
-    // {
-    //     header("Location: dashboard.php");
-    // }
+    if(isset($_SESSION["isLoggedIn"]))
+    {
+        header("Location: dashboard.php");
+    }
 
     if(isset($_POST["submit"]))
     {

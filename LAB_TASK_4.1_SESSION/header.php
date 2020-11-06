@@ -22,10 +22,10 @@
         <td style="border:0px" align="right"> 
         <?php
 
-            if(($_SESSION["isLoggedIn"] ?? false) || isset($_COOKIE["loggedInUserName"]))
+            if( isset($_SESSION["isLoggedIn"]) || isset($_COOKIE["loggedInUserName"]))
             {
         ?>
-                Logged in as <a href="loggedInDashboard.php"> <?php if(isset($_COOKIE["loggedInUserName"])){echo $_COOKIE["loggedInUserName"];}else{echo $_SESSION["loggedInUserName"];} ?> </a> |
+                Logged in as <a href="dashboard.php"> <?php if(isset($_COOKIE["loggedInUserName"])){echo $_COOKIE["loggedInUserName"];}else{echo $_SESSION["loggedInUserName"];} ?> </a> |
                 <a href="logout.php"> Logout </a>
 
         <?php

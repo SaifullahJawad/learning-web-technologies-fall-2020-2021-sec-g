@@ -5,14 +5,15 @@
         session_start();
     }
 
+    if(isset($_SESSION["isLoggedIn"]))
+    {
+        header("Location: dashboard.php");
+    }
+
     $errors = ["userName" => "", "password" => ""];
     $previousInput = "";
 
 
-    // if($_SESSION["isLoggedIn"] ?? false)
-    // {
-    //     header("Location: dashboard.php");
-    // }
 
     if(isset($_POST["submit"]))
     {
@@ -41,14 +42,13 @@
             {
                 if(isset($_POST["rememberMe"]))
                 {
-                    setcookie("loggedInUserName", $_POST["userName"], time()+ 3600);
-                    $_SESSION["isLoggedIn"] = true;
+                    setcookie("loggedInUserName", $_SESSION["name"], time()+ 3600);
                     header("Location: dashboard.php");
                 }
                 else
                 {
                     $_SESSION["isLoggedIn"] = true;
-                    $_SESSION["loggedInUserName"] = $_POST["userName"];
+                    $_SESSION["loggedInUserName"] = $_SESSION["name"];
                     header("Location: dashboard.php");
                 }
             }
