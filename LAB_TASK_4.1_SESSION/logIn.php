@@ -31,13 +31,13 @@
         {
             $errors["password"] = "*required";
         }
-        else
+
 
         if(!empty($_POST["userName"]) && !empty($_POST["password"]) )
         {
 
-            
-            if( $_SESSION["userName"] == $_POST["userName"] && $_SESSION["password"] == $_POST["password"] )
+           
+            if( ($_SESSION["userName"] ?? "") == $_POST["userName"] && ($_SESSION["password"] ?? "") == $_POST["password"] )
             {
                 if(isset($_POST["rememberMe"]))
                 {
@@ -111,7 +111,7 @@
                                 
                                 </td>
 
-                                <td width="300px"> <?php echo $errors["userName"];?> </td>
+                                <td width="300px"> <p style="color: red;"> <?php echo $errors["userName"];?> </p> </td>
 
                             </tr>
 
@@ -128,7 +128,7 @@
 
                                 </td>
 
-                                <td width="300px"> <?php echo $errors["password"];?> </td>
+                                <td width="300px"> <p style="color: red;"> <?php echo $errors["password"];?> </p> </td>
                             
                             </tr>
 
@@ -155,7 +155,7 @@
                             <tr>
                                 <td colspan="3">
                                     <input type="submit" name="submit" value="Submit">
-                                    <a href=""> Forgot Password? </a>
+                                    <a href="forgotPassword.php"> Forgot Password? </a>
                                 </td>
                             </tr>
 

@@ -22,7 +22,7 @@
         <td style="border:0px" align="right"> 
         <?php
 
-            if($_SESSION["isLoggedIn"] ?? false)
+            if(($_SESSION["isLoggedIn"] ?? false) || isset($_COOKIE["loggedInUserName"]))
             {
         ?>
                 Logged in as <a href="loggedInDashboard.php"> <?php if(isset($_COOKIE["loggedInUserName"])){echo $_COOKIE["loggedInUserName"];}else{echo $_SESSION["loggedInUserName"];} ?> </a> |
@@ -33,7 +33,7 @@
             else
             {
         ?>
-                <a href=""> Home </a> |
+                <a href="publicHome.php"> Home </a> |
                 <a href="logIn.php"> Login </a> |
                 <a href="registration.php"> Registration </a>
                 
