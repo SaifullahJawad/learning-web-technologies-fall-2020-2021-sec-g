@@ -9,13 +9,13 @@
 
     }
 
+
     if(!isset($_SESSION))
     {
         session_start();
     }
 
-    $errors = ["name" => "", "email" => "", "userName" => "", "password" => "", "confirmPassword" => "", "genders" => "", "dob" => ""];
-    $previousInput = ["name" => "", "email" => "", "userName" => "", "password" => "", "confirmPassword" => "", "genders" => "", "day" => "", "month" => "", "year" => ""];
+    $errors = ["name" => "", "email" => "", "genders" => "", "dob" => ""];
     
     
 
@@ -27,7 +27,6 @@
     }
     else
     {
-        $previousInput["name"] = $_POST["name"];
         if(!isValidName($_POST["name"]))
         {
             $errors["name"]= "*invalid";
@@ -41,7 +40,6 @@
     }
     else
     {
-        $previousInput["email"] = $_POST["email"];
         if(!isValidEmail($_POST["email"]))
         {
             $errors["email"]= "*invalid";
@@ -51,40 +49,8 @@
 
 
 
-    if(empty($_POST["userName"]))
-    {
-        $errors["userName"] = "*required";
-    }
-    else
-    {
-        $previousInput["userName"] = $_POST["userName"];
-    }
 
 
-
-    if(empty($_POST["password"]))
-    {
-        $errors["password"]= "*required";
-    }
-    else if(empty($_POST["confirmPassword"]))
-    {
-        $previousInput["password"] = $_POST["password"];
-        $errors["confirmPassword"]= "*required";
-    }
-    else
-    {
-        
-        if(!isValidPassword($_POST["password"], $_POST["confirmPassword"]))
-        {
-            $errors["password"]= "*password mismatch";
-        }
-        else
-        {
-            $previousInput["password"] = $_POST["password"];
-            $previousInput["confirmPassword"] = $_POST["confirmPassword"];
-        }
-        
-    }
 
 
 
@@ -92,23 +58,18 @@
     {
         $errors["genders"] = "*required";
     }
-    else
-    {
-        $previousInput["genders"] = $_POST["genders"];
-    }
 
 
 
-    if(empty($_POST["day"]) && empty($_POST["month"]) && empty($_POST["year"]))
+    if(empty($_POST["dob"]))
     {
         $errors["dob"] = "*required";
     }
     else
     {
-        $previousInput["day"] = $_POST["day"];
-        $previousInput["month"] = $_POST["month"];
-        $previousInput["year"] = $_POST["year"];
-        if(!isValidDOB($_POST["day"], $_POST["month"], $_POST["year"]))
+        
+        $splitedDob = explode("/",$_POST["dob"]);
+        if(!isValidDOB($splitedDob[0], $splitedDob[1], $splitedDob[2]))
         {
             $errors["dob"] = "*invalid";
         }
@@ -119,29 +80,20 @@
 
     
 
-    if( $errors["name"] == "" && $errors["email"] == "" && $errors["userName"] == "" && $errors["password"] == "" && $errors["genders"] == "" && $errors["dob"] == "" )
+    if( $errors["name"] == "" && $errors["email"] == "" && $errors["genders"] == "" && $errors["dob"] == "" )
     {
         
 
         $_SESSION["name"] = $_POST["name"];
         $_SESSION["email"] = $_POST["email"];
-        $_SESSION["userName"] = $_POST["userName"];
-        $_SESSION["password"] = $_POST["password"];
         $_SESSION["genders"] = $_POST["genders"];
-
-        $dateOfBirth = $_POST["day"] ."/". $_POST["month"] ."/". $_POST["year"];
-        $_SESSION["dob"] = $dateOfBirth;
-
-        unset($_SESSION["previousInput"]);
+        $_SESSION["dob"] = $_POST["dob"];
         unset($_SESSION["errors"]);
 
-
-        header("Location: logIn.php");
     }
     else
     {
         $_SESSION["errors"] = $errors;
-        $_SESSION["previousInput"] = $previousInput;
     }
 
 
@@ -200,18 +152,6 @@
         }
     }
 
-
-    function isValidPassword( $password, $confirmPassword )
-    {
-        if($password == $confirmPassword)
-        {
-            return true;
-        }
-        else
-        {
-            return false;
-        }
-    }
 
 
 

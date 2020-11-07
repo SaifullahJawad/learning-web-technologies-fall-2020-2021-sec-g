@@ -42,13 +42,13 @@
             {
                 if(isset($_POST["rememberMe"]))
                 {
-                    setcookie("loggedInUserName", $_SESSION["name"], time()+ 3600);
+                    setcookie("loggedInUserName", $_SESSION["userName"], time()+ 3600);
                     header("Location: dashboard.php");
                 }
                 else
                 {
                     $_SESSION["isLoggedIn"] = true;
-                    $_SESSION["loggedInUserName"] = $_SESSION["name"];
+                    $_SESSION["loggedInUserName"] = $_SESSION["userName"];
                     header("Location: dashboard.php");
                 }
             }

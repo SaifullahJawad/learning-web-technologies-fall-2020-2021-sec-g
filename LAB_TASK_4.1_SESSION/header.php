@@ -2,6 +2,7 @@
 
     if (realpath(__FILE__) == realpath( $_SERVER['SCRIPT_FILENAME'] ))
     {
+        header("HTTP/1.0 404 Not Found");
         exit();   
 
     }
@@ -30,7 +31,7 @@
             if( isset($_SESSION["isLoggedIn"]) || isset($_COOKIE["loggedInUserName"]))
             {
         ?>
-                Logged in as <a href="dashboard.php"> <?php if(isset($_COOKIE["loggedInUserName"])){echo $_COOKIE["loggedInUserName"];}else{echo $_SESSION["loggedInUserName"];} ?> </a> |
+                Logged in as <a href="dashboard.php"> <?php if(isset($_COOKIE["loggedInUserName"])){echo $_SESSION["name"];}else{echo $_SESSION["name"];} ?> </a> |
                 <a href="logout.php"> Logout </a>
 
         <?php

@@ -2,7 +2,8 @@
 
     if (realpath(__FILE__) == realpath( $_SERVER['SCRIPT_FILENAME'] ))
     {
-        exit();   
+        header("HTTP/1.0 404 Not Found");
+        exit();  
 
     }
 
@@ -33,7 +34,7 @@
                             <ul>
                                 <li><a href="dashboard.php">Dashboard</a></li>
                                 <li><a href="viewProfile.php">View Profile</a></li>
-                                <li><a href="">Edit Profile</a></li>
+                                <li><a href="editProfile.php">Edit Profile</a></li>
                                 <li><a href="">Change Profile Picture</a></li>
                                 <li><a href="">Change Password</a></li>
                                 <li><a href="logOut.php">Logout</a></li>
