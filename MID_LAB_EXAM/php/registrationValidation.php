@@ -20,24 +20,6 @@
     
 
 
-
-    if(empty($_POST["name"]))
-    {
-        $errors["name"]= "*required";
-    }
-    else
-    {
-        $previousInput["name"] = $_POST["name"];
-        if(!isValidName($_POST["name"]))
-        {
-            $errors["name"]= "*invalid";
-        }
-    }
-
-
-
-
-
     if(empty($_POST["id"]))
     {
         $errors["id"] = "*required";
@@ -75,6 +57,24 @@
 
 
 
+
+
+    if(empty($_POST["name"]))
+    {
+        $errors["name"]= "*required";
+    }
+    else
+    {
+        $previousInput["name"] = $_POST["name"];
+        if(!isValidName($_POST["name"]))
+        {
+            $errors["name"]= "*invalid";
+        }
+    }
+
+
+
+
     if( !isset($_POST["userType"]) )
     {
         $errors["userType"] = "*required";
@@ -93,16 +93,15 @@
     {
         
 
-        $myFile = fopen("userData.txt", "a");
-        
-        
+        $fileHandler = fopen("../userData.txt", "a");
+        fwrite($fileHandler, $_POST["id"]."|".$_POST["password"]."|".$_POST["name"]."|".$_POST["userType"] );
         
 
         unset($_SESSION["previousInput"]);
         unset($_SESSION["errors"]);
 
 
-        header("Location: logIn.php");
+        header("Location: ../php/login.php");
     }
     else
     {
