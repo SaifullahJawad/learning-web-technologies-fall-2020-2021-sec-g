@@ -94,9 +94,16 @@
 
 
         $conn = getConnection();
+
+        $userName = mysqli_real_escape_string($conn, $_POST["userName"]) ;
+        $password = mysqli_real_escape_string($conn, $_POST["newPassword"]);
+        $email = mysqli_real_escape_string($conn, $_POST["email"]);
+        $type= mysqli_real_escape_string($conn, $_POST["type"]);
+        $id = $_SESSION["id"];
+
         if(!empty($_POST["password"]))
         {
-            $sql = "UPDATE usermanagementsystem SET userName='{$_POST["userName"]}', password='{$_POST["newPassword"]}', email='{$_POST["email"]}', type='{$_POST["type"]}' WHERE id='{$_SESSION["id"]}'";
+            $sql = "UPDATE usermanagementsystem SET userName='$userName', password='$password', email='$email', type='$type' WHERE id='$id'";
             echo $sql;
             if(mysqli_query($conn, $sql))
             {
@@ -112,7 +119,7 @@
         }
         else
         {
-            $sql = "UPDATE usermanagementsystem SET userName='{$_POST["userName"]}', email='{$_POST["email"]}', type='{$_POST["type"]}' WHERE id='{$_SESSION["id"]}'";
+            $sql = "UPDATE usermanagementsystem SET userName='$userName', email='$email', type='$type' WHERE id='$id'";
             if(mysqli_query($conn, $sql))
             {
                 unset($_SESSION["errors"]);
