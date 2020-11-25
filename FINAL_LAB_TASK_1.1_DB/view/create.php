@@ -6,25 +6,19 @@
     }
 
     include('header.php');
-	require_once('../db/db.php');
-
-
-    if(isset($_GET["id"]))
-    {
-        retrieveUser($_GET["id"]);
-    }
-
 
 
     if(($_GET["msg"] ?? "") != "hasError")
     {
         unset($_SESSION["errors"]);    
+        unset($_SESSION["previousInput"]);    
     }
+
 
 
     if(($_GET["msg"] ?? "") == "failed")
     {
-        echo "Failed updated";
+        echo "Failed to create an user";
     }
 
 
@@ -35,18 +29,18 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Edit Profile</title>
+        <title>Create User</title>
     </head>
 
     <body>
 
 
-                <form action="../php/editValidation.php" method="POST">
+                <form action="../php/createValidation.php" method="POST">
                 
                 
                     <fieldset style="display: inline-block;">
 
-                        <legend>EDIT USER</legend>
+                        <legend>CREATE AN USER</legend>
                         <table width= "500px" height="350px" >
 
                             <tr height="30px">
@@ -55,7 +49,7 @@
                                 </td>
 
                                 <td>
-                                    <input type="text" name="userName" id="userName" size="30px" value="<?php echo $_SESSION["userName"];?>">
+                                    <input type="text" name="userName" id="userName" size="30px" value="<?php echo $_SESSION["previousInput"]["userName"] ?? "";?>">
                                 </td>
 
                                 <td width = "150px" style="color: red;"> <?php echo $_SESSION["errors"]["userName"] ?? "" ; ?> </td>
@@ -73,11 +67,11 @@
                             <tr height="30px">
 
                                 <td>
-                                    <label for="password">Current Password</label>
+                                    <label for="password">Password</label>
                                 </td>
 
                                 <td>
-                                    <input type="password" name="password" id="password" size="30px">
+                                    <input type="password" name="password" id="password" size="30px" value="<?php echo $_SESSION["previousInput"]["password"] ?? "";?>">
                                 </td>
 
                                 <td width = "150px" style="color: red;"> <?php echo $_SESSION["errors"]["password"] ?? "" ; ?> </td>
@@ -99,14 +93,14 @@
                             <tr height="30px">
 
                                 <td>
-                                    <label for="newPassword">New Password</label>
+                                    <label for="confirmPassword">Confirm Password</label>
                                 </td>
 
                                 <td>
-                                    <input type="password" name="newPassword" id="newPassword" size="30px">
+                                    <input type="password" name="confirmPassword" id="confirmPassword" size="30px" value="<?php echo $_SESSION["previousInput"]["confirmPassword"] ?? "";?>">
                                 </td>
 
-                                <td width = "150px" style="color: red;"> <?php echo $_SESSION["errors"]["newPassword"] ?? "" ; ?> </td>
+                                <td width = "150px" style="color: red;"> <?php echo $_SESSION["errors"]["confirmPassword"] ?? "" ; ?> </td>
 
 
                             </tr>
@@ -121,25 +115,6 @@
 
 
 
-                            <tr height="30px">
-
-                                <td>
-                                    <label for="reTypePassword">Re-Type Password</label>
-                                </td>
-
-                                <td>
-                                    <input type="password" name="reTypePassword" id="reTypePassword" size="30px">
-                                </td>
-
-                                <td width = "150px" style="color: red;"> <?php echo $_SESSION["errors"]["reTypePassword"] ?? "" ; ?> </td>
-
-
-                            </tr>
-
-
-                            <tr height="10px">
-                                <td colspan="3"><hr></td> 
-                            </tr>
 
 
 
@@ -150,7 +125,7 @@
                                 </td>
 
                                 <td>
-                                    <input type="text" name="email" id="email" size="30px" value="<?php echo $_SESSION["email"];?>" >
+                                    <input type="text" name="email" id="email" size="30px" value="<?php echo $_SESSION["previousInput"]["email"] ?? "";?>" >
                                 </td>
 
                                 <td width = "150px" style="color: red;"> <?php echo $_SESSION["errors"]["email"] ?? "" ; ?> </td>
@@ -177,9 +152,9 @@
                                 </td>
 
                                 <td>
-                                    <input type="radio" name="type" value="admin" <?php if($_SESSION["type"]== "admin") { echo "checked" ;} ?> id="option1">
+                                    <input type="radio" name="type" value="admin" <?php if(($_SESSION["previousInput"]["type"] ?? "") == "admin") { echo "checked" ;} ?> id="option1">
                                     <label for="option1"> Admin </label>
-                                    <input type="radio" name="type" value="user" <?php if($_SESSION["type"] == "user") { echo "checked" ;} ?> id="option2">
+                                    <input type="radio" name="type" value="user" <?php if(($_SESSION["previousInput"]["type"] ?? "") == "user") { echo "checked" ;} ?> id="option2">
                                     <label for="option2"> User </label>
                                     
                                 </td>
@@ -200,7 +175,7 @@
 
                             <tr height="30px">
                                 <td colspan="3">
-                                    <input type="submit" name="update" value="Update">
+                                    <input type="submit" name="create" value="Create">
                                 </td> 
                             </tr>
 

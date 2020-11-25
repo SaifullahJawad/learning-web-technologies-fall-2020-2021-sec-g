@@ -124,7 +124,7 @@
             {
                 unset($_SESSION["errors"]);
                 retrieveUser($_SESSION["id"]);
-                header("Location: ../view/edit.php?msg=updated");
+                header("Location: ../view/userlist.php?msg=updated");
             }
             else
             {

@@ -5,6 +5,18 @@
 	$conn = getConnection();
 	$sql = 'select * from usermanagementsystem';
 	$result = mysqli_query($conn, $sql);
+
+
+
+    if(($_GET["msg"] ?? "") == "created")
+    {
+        echo "An user has been add to the list";
+	}
+	
+	if(($_GET["msg"] ?? "") == "updated")
+    {
+        echo "An user profile has been updated";
+    }
 ?>
 
 
