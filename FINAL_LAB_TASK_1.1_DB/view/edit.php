@@ -24,7 +24,7 @@
 
     if(($_GET["msg"] ?? "") == "failed")
     {
-        echo "Failed updated";
+        echo "Failed to update";
     }
 
 

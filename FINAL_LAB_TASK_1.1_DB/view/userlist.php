@@ -16,6 +16,12 @@
 	if(($_GET["msg"] ?? "") == "updated")
     {
         echo "An user profile has been updated";
+	}
+	
+
+	if(($_GET["msg"] ?? "") == "deleted")
+    {
+        echo "An user profile has been deleted";
     }
 ?>
 

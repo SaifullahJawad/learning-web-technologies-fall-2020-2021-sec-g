@@ -33,4 +33,15 @@
         $_SESSION["type"] = $userData["type"];
 	}
 
+
+
+	function freeUserSession()
+	{
+		unset($_SESSION["id"]);
+		unset($_SESSION["userName"]);
+		unset($_SESSION["password"]);
+		unset($_SESSION["email"]);
+		unset($_SESSION["type"]);
+	}
+
 ?>

@@ -104,12 +104,11 @@
         if(!empty($_POST["password"]))
         {
             $sql = "UPDATE usermanagementsystem SET userName='$userName', password='$password', email='$email', type='$type' WHERE id='$id'";
-            echo $sql;
             if(mysqli_query($conn, $sql))
             {
                 unset($_SESSION["errors"]);
-                retrieveUser($_SESSION["id"]);
-                header("Location: ../view/edit.php?msg=updated");
+                freeUserSession();
+                header("Location: ../view/userlist.php?msg=updated");
             }
             else
             {
@@ -123,7 +122,7 @@
             if(mysqli_query($conn, $sql))
             {
                 unset($_SESSION["errors"]);
-                retrieveUser($_SESSION["id"]);
+                freeUserSession();
                 header("Location: ../view/userlist.php?msg=updated");
             }
             else
