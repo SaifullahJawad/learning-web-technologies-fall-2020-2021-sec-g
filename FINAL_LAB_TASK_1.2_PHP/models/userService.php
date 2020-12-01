@@ -24,7 +24,30 @@
         {
 			return false;
 		}
-	}
+    }
+    
+
+
+    function getEmployeeList()
+    {
+
+		$conn = getConnection();
+		$sql = "SELECT * FROM users WHERE user_type = 'employee'";
+
+		$result = mysqli_query($conn, $sql);
+		$employees = [];
+
+        while ($row = mysqli_fetch_assoc($result))
+        {
+			array_push($employees, $row);
+		}
+
+		return $employees;
+    }
+    
+
+
+    
 
 	function getByIdUser($id){
 
@@ -41,20 +64,7 @@
 		}
 	}
 
-	function getAllUser(){
-
-		$conn = getConnection();
-		$sql = "select * from users";
-
-		$result = mysqli_query($conn, $sql);
-		$users = [];
-
-		while ($row = mysqli_fetch_assoc($result)) {
-			array_push($users, $row);
-		}
-
-		return $users;
-	}
+    
 
 	function insertUser($user){
 
