@@ -5,7 +5,7 @@
     </head>
     <body>
 
-        <form>
+        <form action="" method="POST">
 
             <table align="center" border="1" style="border-collapse: collapse;" width="35%">
 
@@ -18,7 +18,7 @@
                 <tr height="40px">
     
                     <td style="padding-left: 5px;"> <label for="name"> Name </td>
-                    <td style="padding-left: 5px;"> <input type="text" id="name" name="name" onkeyup="validateName()" > </td>
+                    <td style="padding-left: 5px;"> <input type="text" id="name" name="name" onclick="clearField('nameDiv');" </td>
                     <td width="100px" style="color: red;">
                         <div id="nameDiv"></div>
                     </td>
@@ -28,7 +28,7 @@
                 <tr height = 40px>
     
                     <td style="padding-left: 5px;"> <label for="email"> Email </label> </td>
-                    <td style="padding-left: 5px;"> <input type="text" id="email" name="email" onkeyup="validateEmail()" > </td>
+                    <td style="padding-left: 5px;"> <input type="text" id="email" name="email" onclick="clearField('emailDiv');"> </td>
                     <td width="100px" style="color: red;">
                         <div id="emailDiv"></div>
                     </td>
@@ -42,16 +42,18 @@
     
                     <td style="padding-left: 5px;">
     
-                        <input type="radio" name="Genders" value="Male" id="genderOption1">
+                        <input type="radio" name="genders" value="Male" id="genderOption1" onclick="clearField('genderDiv');">
                         <label for="genderOption1"> Male </label>
-                        <input type="radio" name="Genders" value="Female" id="genderOption2">
+                        <input type="radio" name="genders" value="Female" id="genderOption2" onclick="clearField('genderDiv');">
                         <label for="genderOption2"> Female </label>
-                        <input type="radio" name="Genders" value="Others" id="genderOption3">
+                        <input type="radio" name="genders" value="Others" id="genderOption3" onclick="clearField('genderDiv');">
                         <label for="genderOption3"> Others </label>
     
                     </td>
     
-                    <td width="30px"></td>
+                    <td width="100px" style="color: red;">
+                        <div id="genderDiv"></div>
+                    </td>
     
                 </tr>
     
@@ -62,13 +64,15 @@
                     </td>
     
                     <td style="padding-left: 5px;"> 
-                        <input type="text" name="day" size="1" > <strong><big>/</big></strong>
-                        <input type="text" name="month" size="1" > <strong><big>/</big></strong>
-                        <input type="text" name="year" size="2" > 
+                        <input type="text" name="day" size="1" id="day" onclick="clearField('dobDiv');"> <strong><big>/</big></strong>
+                        <input type="text" name="month" size="1" id = "month" onclick="clearField('dobDiv');"> <strong><big>/</big></strong>
+                        <input type="text" name="year" size="2" id= "year" onclick="clearField('dobDiv');"> 
                         <label> (dd/mm/yyyy) </label>
                     </td>
     
-                    <td width="30px"></td>
+                    <td width="100px" style="color: red;">
+                        <div id="dobDiv"></div>
+                    </td>
     
                 </tr>
     
@@ -79,7 +83,7 @@
                     </td>
     
                     <td style="padding-left: 5px;"> 
-                        <select name="bloodGroup" id="bloodGroups">
+                        <select name="bloodGroup" id="bloodGroups" onclick="clearField('bloodGroupDiv');">
                             <option value=""></option>
                             <option value="A+"> A+ </option>
                             <option value="A-"> A- </option>
@@ -92,7 +96,9 @@
                         </select> 
                     </td>
     
-                    <td width="30px"></td>
+                    <td width="100px" style="color: red;">
+                        <div id="bloodGroupDiv"></div>
+                    </td>
     
                 </tr>
     
@@ -103,33 +109,37 @@
                     </td>
     
                     <td style="padding-left: 5px;">
-                        <input type="checkbox" name="SSC" value="SSC" id="Degree1">
+                        <input type="checkbox" name="SSC" value="SSC" id="Degree1" onclick="clearField('degreeDiv');">
                         <label for="Degree1"> SSC </label>
-                        <input type="checkbox" name="HSC" value="HSC" id="Degree2">
+                        <input type="checkbox" name="HSC" value="HSC" id="Degree2" onclick="clearField('degreeDiv');">
                         <label for="Degree2"> HSC </label>
-                        <input type="checkbox" name="BSc" value="BSc" id="Degree3">
+                        <input type="checkbox" name="BSc" value="BSc" id="Degree3" onclick="clearField('degreeDiv');">
                         <label for="Degree3"> BSc </label>
                     </td>
     
-                    <td width="30px"></td>
+                    <td width="100px" style="color: red;">
+                        <div id="degreeDiv"></div>
+                    </td>
     
                 </tr>
     
                 <tr height = 40px>
     
                     <td style="padding-left: 5px;"> <label for="picture"> Photo </label> </td>
-                    <td colspan="2" style="padding-left: 5px;"> <input type="file" name="picture" id="picture" > </td>
+                    <td colspan="2" style="padding-left: 5px;"> <input type="file" name="picture" id="picture" onclick="clearField('pictureDiv');"> </td>
     
                 </tr>
     
                 <tr height = 40px>
-                    <td colspan="3"></td>
+                    <td colspan="3" style="color: red;" >
+                        <div id="pictureDiv"></div>
+                    </td>
                 </tr>
     
                 <tr height = 40px>
     
                     <td colspan="3" align="right">
-                        <input type="submit" name="submit" value="Submit">
+                        <input type="submit" name="submit" value="Submit" onclick="return validateForm();">
                         <input type="reset" value="Reset">
                     </td>
     
@@ -139,7 +149,8 @@
             </table>
 
         </form>
-
         <script type="text/javascript" src="formValidation.js"></script>
+
+
     </body>
 </html>
