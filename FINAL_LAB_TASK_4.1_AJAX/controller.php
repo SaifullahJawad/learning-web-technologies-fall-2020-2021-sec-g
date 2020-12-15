@@ -8,8 +8,16 @@
         {
             echo "exists";
         }
-        else
-            echo "non-existant";
+        
+    }
+
+
+    if(isset($_POST["name"]))
+    {
+        if(insertUser($_POST["name"], $_POST["email"], $_POST["gender"], $_POST["dob"], $_POST["bloodGroup"], $_POST["degrees"]))
+        {
+            echo "inserted";
+        }
         
     }
 
