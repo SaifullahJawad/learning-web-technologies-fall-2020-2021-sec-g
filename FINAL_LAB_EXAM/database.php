@@ -49,6 +49,28 @@
 
 
 
+
+    function createUser($name, $contact, $usrname, $password)
+    {
+        $conn = getConnection();
+
+        $sql = "INSERT INTO employees (name, contact, username, password) VALUES ('$name', '$contact', '$username', '$password')";
+ 
+        if(mysqli_query($conn, $sql))
+        {
+            return true;
+        }
+        else
+        {
+            die("Error: ". mysqli_error($conn));
+
+        }
+
+        return false;
+    }
+
+
+
     
 
 
