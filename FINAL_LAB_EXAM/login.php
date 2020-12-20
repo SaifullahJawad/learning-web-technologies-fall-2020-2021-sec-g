@@ -53,7 +53,7 @@
                 <tr>
                     <td colspan="2">
                         <input type="submit" name="login" value="Login" onclick="return emptyLoginFieldCheck();">
-                        <a href="../view/registration.php">Register</a>
+                        <a href="register.html">Register</a>
                     </td>
                 </tr>
 

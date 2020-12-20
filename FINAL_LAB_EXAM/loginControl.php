@@ -11,12 +11,12 @@
         {
             if(isset($_POST["rememberMe"]))
             {
-                setcookie("loggedInUserId", $_POST["userId"], time()+ 3600, "/");
+                setcookie("loggedInUsername", $_POST["username"], time()+ 3600, "/");
                 header("Location: home.php");
             }
             else
             {
-                $_SESSION["loggedInUserId"] = $_POST["userId"];
+                $_SESSION["loggedInUsername"] = $_POST["username"];
                 header("Location: home.php");
             }
         }

@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title> Registration </title>
+</head>
+
+<body>
+
+    <form action="../controller/registrationControl.php" method="POST">
+
+        <fieldset style="display: inline-block;">
+
+            <legend>
+                <h3>REGISTRATION</h3>
+            </legend>
+
+            <table align="center">
+
+
+                <tr>
+                    <td>
+                        <label for="name">Name: </label><br>
+                        <input type="text" id="name" name="name" onclick="clearField('nameError');">
+                    </td>
+                    <td id="nameError" width="120px" style="color: red;"></td>
+
+                </tr>
+
+
+                <tr>
+                    <td>
+                        <label for="contact">Contact: </label><br>
+                        <input type="text" id="contact" name="contact" onclick="clearField('contactError');">
+                    </td>
+                    <td id="contactError" width="120px" style="color: red;"></td>
+
+                </tr>
+
+                <tr>
+                    <td>
+                        <label for="username">Username: </label><br>
+                        <input type="text" id="username" name="username" onclick="clearField('usernameError');">
+                    </td>
+                    <td id="usernameError" width="120px" style="color: red;"></td>
+
+                </tr>
+
+
+                <tr>
+                    <td>
+                        <label for="password">Password: </label><br>
+                        <input type="password" id="password" name="password" onclick="clearField('passwordError');">
+                    </td>
+                    <td id="passwordError" width="120px" style="color: red;"></td>
+
+                </tr>
+
+
+                <tr>
+                    <td>
+                        <label for="confirmPassword">Confirm Password: </label><br>
+                        <input type="password" id="confirmPassword" name="confirmPassword" onclick="clearField('confirmPasswordError');">
+                    </td>
+                    <td id="confirmPasswordError" width="120px" style="color: red;"></td>
+
+                </tr>
+
+
+                <tr>
+                    <td colspan="2">
+                        <hr>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td colspan="2">
+                        <input type="submit" name="register" value="Register" onclick="return validateRegistration();">
+                        <a href="login.php">Login</a>
+                    </td>
+                </tr>
+
+            </table>
+
+        </fieldset>
+
+    </form>
+
+    <script type="text/javascript" src="script.js"></script>
+
+</body>
+
+</html>
